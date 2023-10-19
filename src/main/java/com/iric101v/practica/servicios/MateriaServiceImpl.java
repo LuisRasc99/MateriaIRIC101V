@@ -37,13 +37,13 @@ public class MateriaServiceImpl implements MateriaService {
         return optionalAlumno.orElse(null);
     }
     @Override
-    public Materia createAlumno(Materia alumno) throws Excepcion {
-        Optional<Materia> optionalMateria = alumnoRepository.findById(alumno.getId());
+    public Materia createAlumno(Materia id) throws Excepcion {
+        Optional<Materia> optionalMateria = alumnoRepository.findById(id.getId());
         if (optionalMateria.isPresent())
-            throw new Excepcion(HttpStatus.CONFLICT, "La Matricula '" + alumno + "' Ya fué registrada anteriormente en la base de datos");
+            throw new Excepcion(HttpStatus.CONFLICT, "La Matricula '" + id + "' Ya fué registrada anteriormente en la base de datos");
 
 
-        return alumnoRepository.save(alumno);
+        return alumnoRepository.save(id);
     }
 
     @Override

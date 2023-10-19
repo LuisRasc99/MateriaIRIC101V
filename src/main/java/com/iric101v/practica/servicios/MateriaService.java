@@ -8,9 +8,9 @@ import java.util.List;
 public interface MateriaService
 {
     Materia getMateriaById(Integer id) throws Excepcion;
-    Materia getAlumnoByMatricula(Integer matricula) throws Excepcion;
+    Materia getAlumnoByMatricula(Integer id) throws Excepcion;
     List<Materia> getAllAlumnos();
-    Materia createAlumno (Materia alumno)throws Excepcion;
+    Materia createAlumno (Materia id)throws Excepcion;
     void deleteAlumno(Integer id);
 
 }
