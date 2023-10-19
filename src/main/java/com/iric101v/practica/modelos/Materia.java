@@ -14,14 +14,12 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @Entity
-public class Alumno {
+public class Materia {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    private Integer matricula;
     private String nombre;
-    private String primerApellido;
-    private String segundoApellido;
-    private String email;
+    private String docente;
+
 }
