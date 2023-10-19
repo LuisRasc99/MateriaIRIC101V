@@ -25,18 +25,18 @@ public class MateriaController {
     @Autowired
     private HttpServletRequest request;
 
-    @GetMapping("/{nombre}")
+    @GetMapping("/{id}")
     @ApiOperation(value = "Obtiene los datos de la Materia buscandola por Nombre")
-    public ResponseEntity<Respuesta<Alumno>> buscarMateriaporNombre (@PathVariable  String nombre)
+    public ResponseEntity<Respuesta<Materia>> buscarMateriaporNombre (@PathVariable Integer id)
     {
         String nombreDelEndpoint=request.getRequestURI();
         try
         {
-            Materia materia = materiaService.getMateriaByNombre(nombre);
+            Materia materia = materiaService.getMateriaById(id);
             if(materia!=null)
                 return ResponseEntity.ok(new Respuesta<Materia>(materia,1,"",nombreDelEndpoint));
             else
-                return ResponseEntity.status(HttpStatus.NOT_FOUND).body(new Respuesta<Materia>(null,0,"No existe ningun registro en la base de datos de materia que coincida con el nombre '"+nombre+"'",nombreDelEndpoint));
+                return ResponseEntity.status(HttpStatus.NOT_FOUND).body(new Respuesta<Materia>(null,0,"No existe ningun registro en la base de datos de materia que coincida con el nombre '"+id+"'",nombreDelEndpoint));
         }
         catch (Excepcion e)
         {
