@@ -26,8 +26,8 @@ public class MateriaController {
     private HttpServletRequest request;
 
     @GetMapping("/{id}")
-    @ApiOperation(value = "Obtiene los datos de la Materia buscandola por Nombre")
-    public ResponseEntity<Respuesta<Materia>> buscarMateriaporNombre (@PathVariable Integer id)
+    @ApiOperation(value = "Obtiene los datos de la Materia buscandola por ID")
+    public ResponseEntity<Respuesta<Materia>> buscarMateriaporId (@PathVariable Integer id)
     {
         String nombreDelEndpoint=request.getRequestURI();
         try

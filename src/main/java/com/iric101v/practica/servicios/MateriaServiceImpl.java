@@ -2,7 +2,7 @@ package com.iric101v.practica.servicios;
 
 
 import com.iric101v.practica.modelos.Materia;
-import com.iric101v.practica.repositorios.AlumnoRepository;
+import com.iric101v.practica.repositorios.MateriaRepository;
 import com.iric101v.practica.utils.Excepcion;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -15,49 +15,11 @@ public class MateriaServiceImpl implements MateriaService {
 
 
     @Autowired
-    private AlumnoRepository alumnoRepository;
+    private MateriaRepository materiaRepository;
 
 
-    public Materia getAlumnoById(Integer id) throws Excepcion
-    {
-
-        Optional<Materia> optionalAlumno = alumnoRepository.findById(id);
-        return optionalAlumno.orElse(null);
-    }
-
-    @Override
+        @Override
     public Materia getMateriaById(Integer id) throws Excepcion {
         return null;
-    }
-
-    @Override
-    public Materia getAlumnoByMatricula(Integer id) throws Excepcion
-    {
-        Optional<Materia> optionalAlumno = alumnoRepository.findById(id);
-        return optionalAlumno.orElse(null);
-    }
-    @Override
-    public Materia createAlumno(Materia id) throws Excepcion {
-        Optional<Materia> optionalMateria = alumnoRepository.findById(id.getId());
-        if (optionalMateria.isPresent())
-            throw new Excepcion(HttpStatus.CONFLICT, "La Matricula '" + id + "' Ya fué registrada anteriormente en la base de datos");
-
-
-        return alumnoRepository.save(id);
-    }
-
-    @Override
-    public List<Materia> getAllAlumnos() {
-
-        return alumnoRepository.findAll();
-    }
-
-    @Override
-    public void deleteAlumno(Integer id) {
-        Materia alumnoExistente = getMateriaById(id);
-        if(alumnoExistente==null)
-            throw new Excepcion(HttpStatus.NOT_FOUND,"No existe ningun registro en la base de datos de Alumnos que coincida con el id '"+id.toString()+"'");
-
-        alumnoRepository.delete(alumnoExistente);
     }
 }
